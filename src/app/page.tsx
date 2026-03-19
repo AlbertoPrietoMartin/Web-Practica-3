@@ -45,7 +45,7 @@ const Home = () => {
           <SearchBar setSearchQuery={setSearchQuery} />
 
           <p className="resultsCount">
-            {filtered.length} resultados
+            {filtered.length} resultado/s
           </p>
         </div>
       </SectionContainer>
