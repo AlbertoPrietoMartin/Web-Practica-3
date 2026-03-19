@@ -20,38 +20,49 @@ export default function ProductDetail() {
 
   if (!product) return <p>Loading...</p>;
 
-  return (
-    <div className="app">
-      <button onClick={() => router.push("../")}> Home </button>
+return (
+  <div className="app">
+    <button
+      className="backButton"
+      onClick={() => router.push("../")}
+    >HOME</button>
 
-      <SectionContainer>
-        <h2>{product.title}</h2>
+    <SectionContainer>
+      <div className="productDetailContainer">
 
-        <div className="flex gap-3">
-          {product.images.map((img) => (
-            <img key={img} src={img} width={120} />
-          ))}
+        <div className="productImages">
+          <img
+            src={product.images[0]}
+            className="mainImage"
+          />
+
+          <div className="imageGallery">
+            {product.images.map((img) => (
+              <img key={img} src={img} />
+            ))}
+          </div>
         </div>
-      </SectionContainer>
 
-      <SectionContainer>
-        <p><strong>Descripcion: </strong>{product.description}</p>
+        <div className="productInfo">
+          <h2>{product.title}</h2>
 
-        <p><strong>Marca:</strong> {product.brand}</p>
-        <p><strong>Rating:</strong> {product.rating}</p>
-        <p><strong>Precio:</strong> {product.price}€</p>
+          <p><strong>Descripción: </strong> {product.description}</p>
+          <p><strong>Marca: </strong> {product.brand}</p>
+          <p><strong>Rating: </strong> {product.rating}</p>
+          <p><strong>Precio: </strong> {product.price}€</p>
 
-        <p>
-          <strong>Stock:</strong>{" "}
-          {product.stock < 10
-            ? "pocas unidades!"
-            : product.stock}
-        </p>
+          <p>
+            <strong>Stock:</strong>{" "}
+            {product.stock < 10 ? "¡Pocas unidades!" : product.stock}
+          </p>
 
-        {product.weight && (
-          <p><strong>Peso:</strong> {product.weight}g</p>
-        )}
-      </SectionContainer>
-    </div>
-  );
+          {product.weight && (
+            <p><strong>Peso:</strong> {product.weight}g</p>
+          )}
+        </div>
+
+      </div>
+    </SectionContainer>
+  </div>
+);
 }

@@ -4,11 +4,10 @@ import { useEffect, useState } from "react";
 import { ProductT } from "./types";
 import { getAllProducts } from "./api/products";
 import { SearchBar } from "./components/SearchBar";
-import { ProductCard } from "./components/ProductCard";
 import { SectionContainer } from "./components/SectionContainer";
 import { ProductGrid } from "./components/ProductGrid";
 
-const Home=()=> {
+const Home = () => {
   const [products, setProducts] = useState<ProductT[]>([]);
   const [filtered, setFiltered] = useState<ProductT[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -26,7 +25,7 @@ const Home=()=> {
     fetchProducts();
   }, []);
 
-  // filtrado dinámico toLowerCase para que pille si tambien lo metes en minusculas
+  // filtrado dinámico
   useEffect(() => {
     const result = products.filter((p) =>
       p.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -35,20 +34,27 @@ const Home=()=> {
     setFiltered(result);
   }, [searchQuery, products]);
 
-  if (loading) return <p>Loading products...</p>;
+  if (loading) return <p className="loading">Loading products...</p>;
 
   return (
     <div className="app">
-      <h1>Catalogo de Productos</h1>
+      <h1 className="pageTitle">Catálogo de Productos</h1>
 
       <SectionContainer>
-        <SearchBar setSearchQuery={setSearchQuery} />
-        <p>{filtered.length} resultados</p>
+        <div className="searchSection">
+          <SearchBar setSearchQuery={setSearchQuery} />
+
+          <p className="resultsCount">
+            {filtered.length} resultados
+          </p>
+        </div>
       </SectionContainer>
 
-      <ProductGrid products={filtered} />
+      <div className="productsGrid">
+        <ProductGrid products={filtered} />
+      </div>
     </div>
   );
-}
+};
 
 export default Home;

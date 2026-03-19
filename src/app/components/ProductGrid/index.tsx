@@ -5,7 +5,7 @@ import { ProductCard } from "../ProductCard";
 
 export const ProductGrid = ({ products }: { products: ProductT[] }) => {
   return (
-    <div>
+    <div className="productsGrid">
       {products.map((p) => (
         <ProductCard key={p.id} product={p} />
       ))}

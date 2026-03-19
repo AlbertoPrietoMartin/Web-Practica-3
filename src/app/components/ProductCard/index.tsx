@@ -17,7 +17,9 @@ export const ProductCard = ({ product }: { product: ProductT }) => {
 
 
       <Link href={`/product/${product.id}`}>
-        <button>Ver detalles</button>
+        <button className="detailsButton">
+          Ver detalles
+        </button>
       </Link>
     </SectionContainer>
   );
