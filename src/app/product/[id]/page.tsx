@@ -48,7 +48,7 @@ return (
 
           <p><strong>Descripción: </strong> {product.description}</p>
           <p><strong>Marca: </strong> {product.brand}</p>
-          <p><strong>Rating: </strong> {product.rating}</p>
+          <p><strong>Rating: </strong> {product.rating}/5</p>
           <p><strong>Precio: </strong> {product.price}€</p>
 
           <p>
